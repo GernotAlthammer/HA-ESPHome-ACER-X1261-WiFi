@@ -3,7 +3,7 @@ In this folder the picture of a custom made board with ESP8266 + RS232 module fo
 
 Wire diagram for ESP8266 with RS232 interface to the serial port of the ACER X1261 projector
 
-<img src="https://github.com/GernotAlthammer/HA-ESPHome-ACER-X1261-WiFi/blob/main/Pictures/ESP8266_PROJECTOR_RS232_Control.png" style="width: 50%;">
+<img src="https://github.com/GernotAlthammer/HA-ESPHome-ACER-X1261-WiFi/blob/main/Pictures/ESP8266_PROJECTOR_RS232_Control.png" style="width: 100%;">
 
 Serial port of the ACER X1261 projector
 
