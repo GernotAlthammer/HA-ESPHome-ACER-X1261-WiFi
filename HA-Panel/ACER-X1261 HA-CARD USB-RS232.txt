@@ -1,0 +1,191 @@
+# KARTE in Home-Assistant für USB-RS232 serielle Schnittstelle
+cards:
+  - type: picture
+    image: /local/AcerX1261.png
+  - type: markdown
+    content: Fernbedienung (USB - RS232)
+  - type: grid
+    square: false
+    columns: 3
+    cards:
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: true
+        name: EIN
+        tap_action:
+          action: call-service
+          service: shell_command.projector_on
+        icon: mdi:projector
+        hold_action:
+          action: none
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: true
+        name: Up
+        tap_action:
+          action: call-service
+          service: shell_command.projector_up
+        icon: mdi:arrow-up-bold-box
+        hold_action:
+          action: none
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: true
+        name: AUS
+        tap_action:
+          action: call-service
+          service: shell_command.projector_off
+        icon: mdi:projector-off
+        hold_action:
+          action: none
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: true
+        name: Left
+        tap_action:
+          action: call-service
+          service: shell_command.projector_left
+        icon: mdi:arrow-left-bold-box
+        hold_action:
+          action: none
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: true
+        name: MENUE
+        tap_action:
+          action: call-service
+          service: shell_command.projector_menu
+        icon: mdi:home
+        hold_action:
+          action: none
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: true
+        name: Right
+        tap_action:
+          action: call-service
+          service: shell_command.projector_right
+        icon: mdi:arrow-right-bold-box
+        hold_action:
+          action: none
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: true
+        name: Aspect 16:9
+        tap_action:
+          action: call-service
+          service: shell_command.projector_aspect_ratio_16_9
+        icon: mdi:aspect-ratio
+        hold_action:
+          action: none
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: true
+        name: Down
+        tap_action:
+          action: call-service
+          service: shell_command.projector_down
+        icon: mdi:arrow-down-bold-box
+        hold_action:
+          action: none
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: true
+        name: Aspect 4:3
+        tap_action:
+          action: call-service
+          service: shell_command.projector_aspect_ratio_4_3
+        icon: mdi:aspect-ratio
+        hold_action:
+          action: none
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: true
+        name: Resync
+        tap_action:
+          action: call-service
+          service: shell_command.projector_re_sync
+        icon: mdi:cog-sync
+        hold_action:
+          action: none
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: true
+        name: Zoom
+        tap_action:
+          action: call-service
+          service: shell_command.projector_zoom
+        icon: mdi:resize
+        hold_action:
+          action: none
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: true
+        name: Select Source
+        tap_action:
+          action: call-service
+          service: shell_command.projector_source
+        icon: mdi:video-input-component
+        hold_action:
+          action: none
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: true
+        name: Freeze
+        tap_action:
+          action: call-service
+          service: shell_command.projector_freeze
+        icon: mdi:box-shadow
+        hold_action:
+          action: none
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: true
+        name: Hide/Unhide
+        tap_action:
+          action: call-service
+          service: shell_command.projector_hide
+        icon: mdi:inbox-remove
+        hold_action:
+          action: none
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: true
+        name: Source D-Sub
+        tap_action:
+          action: call-service
+          service: shell_command.projector_source_analog_rgb_for_d_sub
+        icon: mdi:video-input-hdmi
+        hold_action:
+          action: none
+        icon_height: 50px
+type: vertical-stack

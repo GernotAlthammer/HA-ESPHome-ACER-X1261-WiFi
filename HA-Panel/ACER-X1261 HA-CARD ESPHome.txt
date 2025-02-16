@@ -1,0 +1,195 @@
+# KARTE in Home-Assistant für ESPHome ESP8266-RS232 Schnittstelle
+cards:
+  - type: entities
+    entities:
+      - entity: binary_sensor.x1261_uart_status
+        name: Fernbedienung (WiFi)
+    state_color: true
+    header:
+      type: picture
+      image: /local/AcerX1261.png
+  - type: grid
+    square: false
+    columns: 3
+    cards:
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: false
+        name: EIN
+        icon: ""
+        tap_action:
+          action: toggle
+        hold_action:
+          action: none
+        entity: button.projector_on
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: false
+        name: Up
+        tap_action:
+          action: toggle
+        icon: ""
+        hold_action:
+          action: none
+        entity: button.menu_up
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: false
+        name: AUS
+        tap_action:
+          action: toggle
+        icon: ""
+        hold_action:
+          action: none
+        entity: button.projector_off
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: false
+        name: Left
+        tap_action:
+          action: toggle
+        icon: ""
+        hold_action:
+          action: none
+        entity: button.menu_left
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: false
+        name: MENUE
+        icon: ""
+        hold_action:
+          action: none
+        tap_action:
+          action: toggle
+        icon_height: 50px
+        entity: button.menu_on_off_2
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: false
+        name: Right
+        tap_action:
+          action: toggle
+        icon: ""
+        hold_action:
+          action: none
+        entity: button.menu_right
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: false
+        name: Aspect 16:9
+        tap_action:
+          action: toggle
+        icon: ""
+        hold_action:
+          action: none
+        entity: button.aspect_ratio_16_9_2
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: false
+        name: Down
+        tap_action:
+          action: toggle
+        icon: ""
+        hold_action:
+          action: none
+        entity: button.menu_down
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: false
+        name: Aspect 4:3
+        tap_action:
+          action: toggle
+        icon: ""
+        hold_action:
+          action: none
+        icon_height: 50px
+        entity: button.aspect_ratio_4_3_2
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: false
+        name: Resync
+        tap_action:
+          action: toggle
+        icon: ""
+        hold_action:
+          action: none
+        entity: button.re_sync
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: false
+        name: Zoom
+        tap_action:
+          action: toggle
+        icon: ""
+        hold_action:
+          action: none
+        entity: button.zoom
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: false
+        name: Select Source
+        tap_action:
+          action: toggle
+        icon: ""
+        hold_action:
+          action: none
+        entity: button.select_source
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: false
+        name: Freeze
+        tap_action:
+          action: toggle
+        icon: ""
+        hold_action:
+          action: none
+        entity: button.freeze
+        icon_height: 50px
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: false
+        name: Hide/Unhide
+        tap_action:
+          action: toggle
+        icon: ""
+        hold_action:
+          action: none
+        icon_height: 50px
+        entity: button.hide_unhide_2
+      - show_name: true
+        show_icon: true
+        type: button
+        show_state: false
+        name: Source D-Sub
+        tap_action:
+          action: toggle
+        icon: ""
+        hold_action:
+          action: none
+        entity: button.source_rgb_d_sub
+        icon_height: 50px
+type: vertical-stack
