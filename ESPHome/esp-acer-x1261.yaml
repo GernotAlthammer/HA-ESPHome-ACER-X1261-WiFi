@@ -1,0 +1,226 @@
+### Update ESP Remote Control for ACER X1261 Beamer
+
+###
+esphome:
+  name: esp-acer-x1261
+  comment: "ACER X1261 Beamer WiFi to RS232"
+
+  project:
+    name: "ESP8266.ACER X1261 Beamer WiFi"
+    version: "1.0"
+
+esp8266:
+  board: esp01_1m
+
+
+# enabel Web Server Interface
+web_server:
+  port: 80
+  version: 2
+  log: false
+  auth:
+    username: "x1261"
+    password: "x1261"
+
+
+# Enable logging
+logger:
+  baud_rate: 0     # Disable UART logging (pins GPIO1/3 are used for RS232 communication)
+
+
+#### Enable Home Assistant API ###################################
+api:
+
+
+# Serielle Schnittstelle schreiben
+  services:
+    - service: write
+      variables:
+        command: string
+      then:
+# TX-LED on
+        - output.turn_on: tx_led
+# Write Command
+        - uart.write:
+            id: projector
+            data: !lambda |-
+              std::string str = command;
+              std::vector<uint8_t> vec(str.begin(), str.end());
+              return vec;
+# TX-LED off
+        - delay: 0.25sec
+        - output.turn_off: tx_led
+
+
+#### Over The Air ################################################
+ota:
+  platform: esphome
+
+
+wifi:
+  networks:
+  - ssid: !secret wifi_ssid
+    password: !secret wifi_password
+
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Acer-X1261 Fallback Hotspot"
+
+
+captive_portal:
+
+
+#### BINÄRE SENSOREN #############################################
+binary_sensor:
+  # Status der Seriellen Schnittstelle
+  - platform: status
+    name: "X1261 UART Status"
+
+
+#### STATUS-LED ##################################################
+# LEDs an GPIOs ansteuern
+output:
+  # GREEN LED (WiFi Connection)
+  - id: wifi_led
+    #platform: gpio
+    platform: esp8266_pwm
+    pin: GPIO14
+  # RED LED (UART Schnittstelle)
+  - id: tx_led
+    platform: gpio
+    pin: GPIO4
+
+  # BLUE Status-LED an GPIO2 ansteuern
+  - platform: esp8266_pwm
+    id: onboard_led
+    pin:
+      number: GPIO2
+      inverted: true
+
+light:
+ - platform: monochromatic
+   name: "Onboard LED"
+   output: onboard_led
+   id: blue_led
+ - platform: monochromatic
+   name: "WiFi connection LED"
+   id: wifi_connection_led
+   output: wifi_led
+ - platform: binary
+   name: "TX communication LED"
+   output: tx_led
+   id: tx_communication_led
+
+
+#### INTERVAL ####################################################
+interval:
+  # Check Wifi-Status every 10 seconds and turn on the GREEN LED (GPIO14)
+  - interval: 10s
+    then:
+      if:
+        condition:
+          wifi.connected:
+        then:
+          if:
+            condition:
+              light.is_off: wifi_connection_led
+            then:
+              - output.turn_on: wifi_led # GREEN LED Output On (GPIO14)
+              - light.turn_on: wifi_connection_led # Turn On Light entity
+        else:
+          if:
+            condition:
+              light.is_on: wifi_connection_led
+            then:
+              - output.turn_off: wifi_led # GREEN LED Output Off (GPIO14)
+              - light.turn_off: wifi_connection_led # Turn Off Light entity
+
+
+#### UART ########################################################
+#### Serielle Schnittstelle UART übe GPIOs #######################
+uart:
+  tx_pin: GPIO1
+  rx_pin: GPIO3
+  baud_rate: 9600
+  id: projector
+  debug:
+    direction: RX
+    dummy_receiver: true
+    after:
+      delimiter: "\r"
+
+    sequence:
+      - lambda: |-
+          UARTDebug::log_string(direction, bytes);  //Still log the data
+                   
+          //Example to convert uart text to string
+          std::string str(bytes.begin(), bytes.end());
+
+          //watch for potential problems with non printable or special characters in string
+          id(rawString).publish_state(str.c_str());
+          
+
+#### BUTTON ######################################################
+button:
+  # Include specific command button codes for projector ACER X1261
+  # command codes are send via UART id projector
+  !include /config/buttons-acer-x1261.yaml
+
+
+#### SENSOR ######################################################
+sensor:
+  # WiFi Signal als Sensor
+  - platform: wifi_signal # Reports the WiFi signal strength/RSSI in dB
+    name: X1261 WiFi Signal
+    id: x1261_wifi_strength
+    update_interval: 60s
+    icon: mdi:wifi
+    entity_category: "diagnostic" 
+    
+  - platform: copy # Reports the WiFi signal strength in %
+    source_id: x1261_wifi_strength
+    name: "X1261 WiFi Percent"
+    filters:
+      - lambda: return min(max(2 * (x + 100.0), 0.0), 100.0);
+    unit_of_measurement: "%"
+    entity_category: "diagnostic"
+
+  # Versorgugsspannung messen
+  - platform: adc
+    pin: VCC
+    name: "X1261 VCC Spannung"
+    id: x1261_vcc_spannung
+    entity_category: "diagnostic"
+
+
+#### SWITCH ######################################################
+switch:
+  # Nestart der seriellen Schnittstelle
+  - platform: restart
+    name: "X1261 UART Restart"
+
+
+#### TEXT SENSOR #################################################
+text_sensor:
+  # Local WiFi Info as Text-Sensor
+  - platform: wifi_info
+    ip_address:
+      name: X1261 IP Address
+    ssid:
+      name: X1261 Connected SSID
+    bssid:
+      name: X1261 Connected BSSID
+    mac_address:
+      name: X1261 Mac Wifi Address
+    scan_results:
+      name: X1261 Latest Scan Results
+  # ESP Version
+  - platform: version
+    name: X1261 ESPHome Version
+  # UART Raw string Text Sensor
+  - platform: template
+    name: "Raw String"
+    id: "rawString"
+
+#### END #########################################################

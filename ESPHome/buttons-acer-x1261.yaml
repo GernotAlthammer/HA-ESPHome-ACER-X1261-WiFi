@@ -1,0 +1,370 @@
+### Definition of BUTTON commands to control ACER X1261 Video Projector
+# commands are specifc for every projector
+# button:
+
+  # Projector ON
+  - platform: template
+    id: x1261_on
+    name: "Projector ON"
+    icon: "mdi:projector"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 001\r"
+
+  # Projector OFF
+  - platform: template
+    id: x1261_off
+    name: "Projector OFF"
+    icon: "mdi:projector-off"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 002\r"
+
+  # Projector MENU On/Off
+  - platform: template
+    id: x1261_menu
+    name: "Menu On/Off"
+    icon: "mdi:home"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 008\r"
+
+  # Projector MENU Up
+  - platform: template
+    id: x1261_up
+    name: "Menu Up"
+    icon: "mdi:arrow-up-bold-box"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 009\r"
+
+  # Projector MENU Down
+  - platform: template
+    id: x1261_down
+    name: "Menu Down"
+    icon: "mdi:arrow-down-bold-box"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 010\r"
+
+  # Projector MENU Right
+  - platform: template
+    id: x1261_right
+    name: "Menu Right"
+    icon: "mdi:arrow-right-bold-box"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 011\r"
+
+  # Projector MENU Left
+  - platform: template
+    id: x1261_left
+    name: "Menu Left"
+    icon: "mdi:arrow-left-bold-box"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 012\r"
+
+  # Projector Aspect Ration 16:9
+  - platform: template
+    id: aspect_16_9
+    name: "Aspect Ratio 16:9"
+    icon: "mdi:aspect-ratio"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 021\r"
+
+  # Projector Aspect Ration 4:3
+  - platform: template
+    id: aspect_4_3
+    name: "Aspect Ratio 4:3"
+    icon: "mdi:aspect-ratio"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 022\r"
+
+  # Projector Re-Sync
+  - platform: template
+    id: x1261_resync
+    name: "Re-Sync"
+    icon: "mdi:cog-sync"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 014\r"
+
+  # Projector Video Zoomc
+  - platform: template
+    id: x1261_zoom
+    name: "Zoom"
+    icon: "mdi:resize"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 046\r"
+
+  # Projector Video Select Source
+  - platform: template
+    id: x1261_source_select
+    name: "Select Source"
+    icon: "mdi:video-input-component"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 031\r"
+
+  # Projector Video Freeze
+  - platform: template
+    id: x1261_freeze
+    name: "Freeze"
+    icon: "mdi:box-shadow"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 007\r"
+
+  # Projector Video Hide/Unhide
+  - platform: template
+    id: x1261_hide
+    name: "Hide/Unhide"
+    icon: "mdi:inbox-remove"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 030\r"
+
+  # Projector Video Source Analog RGB for D-Sub
+  - platform: template
+    id: x1261_source_rgb
+    name: "Source RGB D-Sub"
+    icon: "mdi:video-input-hdmi"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 015\r"
+
+  # Projector Video Source PbPr for D-Sub
+  - platform: template
+    id: x1261_source_pbpr
+    name: "Source PbPr D-Sub"
+    icon: "mdi:video-input-hdmi"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 017\r"
+
+  # Projector Video Source S-Video
+  - platform: template
+    id: x1261_source_svideo
+    name: "Source S-Video"
+    icon: "mdi:video-input-hdmi"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 018\r"
+
+  # Projector Video Source Composite Video
+  - platform: template
+    id: x1261_source_compvideo
+    name: "Source Composite Video"
+    icon: "mdi:video-input-hdmi"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 019\r"
+
+  # Projector Volume Mute
+  - platform: template
+    id: x1261_vol_mute
+    name: "Mute"
+    icon: "mdi:volume-mute"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 006\r"
+
+  # Projector Volume Plus
+  - platform: template
+    id: x1261_vol_up
+    name: "Volume +"
+    icon: "mdi:volume-plus"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 023\r"
+
+  # Projector Volume Minus
+  - platform: template
+    id: x1261_vol_down
+    name: "Volume -"
+    icon: "mdi:volume-minus"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 024\r"
+
+  # Projector Video Brightness
+  - platform: template
+    id: x1261_brightness
+    name: "Brightness"
+    icon: "mdi:brightness-7"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 025\r"
+
+  # Projector Video Contrast
+  - platform: template
+    id: x1261_contrast
+    name: "Contrast"
+    icon: "mdi:contrast-box"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 026\r"
+
+  # Projector Video Color Temperature
+  - platform: template
+    id: x1261_color_temp
+    name: "Color Temperature"
+    icon: "mdi:contrast-circle"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 027\r"
+
+  # Projector Video Color RBG
+  - platform: template
+    id: x1261_color_rbg
+    name: "Color RBG"
+    icon: "mdi:invert-colors"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 048\r"
+
+  # Projector Video Saturation Adjustmanet
+  - platform: template
+    id: x1261_saturation
+    name: "Saturation Adjustment"
+    icon: "mdi:palette"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 032\r"
+
+  # Projector Video Hue Adjustmant
+  - platform: template
+    id: x1261_hue
+    name: "Hue Adjustment"
+    icon: "mdi:palette"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 033\r"
+
+  # Projector Video Sharpness Adjustmant
+  - platform: template
+    id: x1261_sharpness
+    name: "Sharpness Adjustment"
+    icon: "mdi:adjust"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 034\r"
+
+  # Projector Language Selection
+  - platform: template
+    id: x1261_language
+    name: "Select Language"
+    icon: "mdi:calendar-text"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 049\r"
+
+  # Projector Query Model Name
+  - platform: template
+    id: x1261_model_name
+    name: "Query Model Name"
+    icon: "mdi:calendar-question"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 035\r"
+
+  # Projector Query Native Display Resolutione
+  - platform: template
+    id: x1261_display_res
+    name: "Query Resoluton"
+    icon: "mdi:calendar-question"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 036\r"
+
+  # Projector Query Company Name
+  - platform: template
+    id: x1261_company
+    name: "Query Company Name"
+    icon: "mdi:calendar-question"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 037\r"
+
+  # Projector Video Keystone
+  - platform: template
+    id: x1261_keystone
+    name: "Keystone"
+    icon: "mdi:panorama-horizontal"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 004\r"
+
+  # Projector Video Keystone Up
+  - platform: template
+    id: x1261_keystone_up
+    name: "Keystone Up"
+    icon: "mdi:arrow-up-bold-box-outline"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 042\r"
+
+  # Projector Video Keystone Down
+  - platform: template
+    id: x1261_keystone_down
+    name: "Keystone Down"
+    icon: "mdi:arrow-down-bold-box-outline"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 043\r"
+
+  # Projector Video e-Key
+  - platform: template
+    id: x1261_ekey
+    name: "e-Key"
+    icon: "mdi:key"
+    on_press:
+      - uart.write:
+          id: projector
+          data: "* 0 IR 047\r"
+
+#### ENDE ####
+
+
+
+
+
