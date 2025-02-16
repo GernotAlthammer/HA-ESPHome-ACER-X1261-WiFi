@@ -12,7 +12,13 @@ This ist the pin-out of hte 3-pin serial interface of the ACER X1261 projector
 <img src="https://github.com/GernotAlthammer/HA-ESPHome-ACER-X1261-WiFi/blob/main/Pictures/ACER-X1261_RS232-Port.png" style="width: 50%;">
 
 <h3 tabindex="-1" class="heading-element" dir="auto">Hardware example</h3>
-This are example pictures of the control board with the ESP8266 and RS232 module. Connection is done with a custom made RS232 9-pin D-Sub to 3-pin port cable.
+This are example pictures of the control board with the ESP8266 and RS232 module.
+
+The LEDs are showing the
+- WiFi connection (GPIO14 - GREEN)
+- Serial command transmission TX (GPIO4 - RED)
+
+Connection is done with a custom made RS232 9-pin D-Sub to 3-pin port cable.
 
 <img src="https://github.com/GernotAlthammer/HA-ESPHome-ACER-X1261-WiFi/blob/main/Pictures/IMG_3362.JPG" style="width: 100%;">
 
