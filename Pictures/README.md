@@ -7,9 +7,11 @@ Wire diagram for ESP8266 with RS232 interface to the serial port of the ACER X12
 <img src="https://github.com/GernotAlthammer/HA-ESPHome-ACER-X1261-WiFi/blob/main/Pictures/ESP8266_PROJECTOR_RS232_Control.png" style="width: 100%;">
 
 <h3 tabindex="-1" class="heading-element" dir="auto">Projector port</h3>
-This ist the pin-out of hte 3-pin serial interface of the ACER X1261 projector
+This ist the pin-out of the 3-pin serial interface of the ACER X1261 projector
 
 <img src="https://github.com/GernotAlthammer/HA-ESPHome-ACER-X1261-WiFi/blob/main/Pictures/ACER-X1261_RS232-Port.png" style="width: 50%;">
+
+The IR commands for other Acer projectors can be seen in the file <a href="https://github.com/GernotAlthammer/HA-ESPHome-ACER-X1261-WiFi/blob/main/Pictures/ACER_RS232%20table_GitHub.xls" rel="nofollow">ACER_RS232 table_GitHub.xls</a>
 
 <h3 tabindex="-1" class="heading-element" dir="auto">Hardware example</h3>
 This are example pictures of the control board with the ESP8266 and RS232 module.
