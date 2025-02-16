@@ -4,7 +4,7 @@ ESPHome code for projector ACER X1261 controlled via RS232 interface
 
 In the folder <a href="https://github.com/GernotAlthammer/HA-ESPHome-ACER-X1261-WiFi/tree/main/ESPHome" rel="nofollow">ESPHome</a> is the exapmle of YAML code for an ESP8266 D1 Mini + RS232 module to communicate with the serial interface of the ACER X1261 projector.
 
-<img src="https://github.com/GernotAlthammer/HA-ESPHome-ACER-X1261-WiFi/blob/main/Pictures/ACER_HA-Panel-WIFI.png" style="width: 50%;">
+<img src="https://github.com/GernotAlthammer/HA-ESPHome-ACER-X1261-WiFi/blob/main/Pictures/ACER_HA-Panel-WIFI.png" style="width: 50%;"><img src="https://github.com/GernotAlthammer/HA-ESPHome-ACER-X1261-WiFi/blob/main/Pictures/ESP8266_PROJECTOR_RS232_Control.png" style="width: 50%;">
 
 <h3 tabindex="-1" class="heading-element" dir="auto">Information</h3>
 Alternatively to the ESP8266 WiFi-to-Serial interface it is also possible to use a USB-to-RS232 interface.
